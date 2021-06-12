@@ -16,23 +16,26 @@ export const ProductCart = () => {
     total_cost += item.price * item.count;
     return (
       <div class="four wide column">
-        <div class="ui card" key={item.id}>
-          <div class="image">
-            <img style={{ height: "200px" }} src={item.image} />
-          </div>
-          <div class="content" style={{ height: "150px" }}>
-            <a class="header">{item.title}</a>
-            <div class="description">Quantity: {item.count}</div>
-          </div>
-          <div class="extra content">
-            <button
-              className="ui red button"
-              onClick={() => {
-                removeItem(item);
-              }}
-            >
-              Remove Item
-            </button>
+        <div class="ui link cards" key={item.id}>
+          <div className="ui card">
+            <div class="image">
+              <img src={item.image} />
+            </div>
+            <div class="content">
+              <a class="header">{item.title}</a>
+              <div className="meta price">$ {item.price}</div>
+              <div className="meta">Quantity - {item.count}</div>
+            </div>
+            <div class="extra content">
+              <button
+                className="ui red button"
+                onClick={() => {
+                  removeItem(item);
+                }}
+              >
+                Remove Item
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -40,27 +43,19 @@ export const ProductCart = () => {
   });
 
   return (
-    <div style={{ paddingBottom: "2rem" }}>
+    <div>
       <div className="ui grid container">{cart_jsx}</div>
       {cartItems.length > 0 ? (
-        <div
-          style={{
-            width: "300px",
-            height: "auto",
-            marginTop: "2rem",
-            marginLeft: "auto",
-            marginRight: "auto",
-            padding: "1rem",
-          }}
-          class="ui card"
-        >
-          <h1>Total Cost - $ {total_cost.toFixed(2)}</h1>
-          <Link to={"/cart/order"}>
-            <button className="ui primary button">Proceed To Checkout</button>
-          </Link>
+        <div class="ui card totalCost">
+          <div>
+            <h3>Total Cost - $ {total_cost.toFixed(2)}</h3>
+            <Link to={"/cart/order"}>
+              <button className="ui primary button">Proceed To Checkout</button>
+            </Link>
+          </div>
         </div>
       ) : (
-        <div class="ui message" style={{ marginTop: "5rem" }}>
+        <div class="ui message topMargin">
           <div class="header">Empty Cart</div>
           <p>
             Your cart is empty. Please add items to the cart to proceed to the

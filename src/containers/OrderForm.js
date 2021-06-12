@@ -3,41 +3,39 @@ import { useDispatch } from "react-redux";
 import { emptyCart } from "../redux/actions/productActions";
 
 export const OrderForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [mailAddress, setMailAddress] = useState("");
-  const [cardInfo, setCardInfo] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    mailAddress: "",
+    cardInfo: "",
+    showMessage: false,
+  });
 
   const dispatch = useDispatch();
 
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
+  const handleChanges = (event) => {
+    const value = event.target.value;
 
-  const handleEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleAddress = (event) => {
-    setMailAddress(event.target.value);
-  };
-  const handleCard = (event) => {
-    setCardInfo(event.target.value);
+    setState({
+      ...state,
+      [event.target.name]: value,
+    });
   };
 
   const manageMessage = () => {
-    setShowMessage(false);
+    setState({ ...state, showMessage: false });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (name && email && mailAddress && cardInfo) {
-      setName("");
-      setEmail("");
-      setMailAddress("");
-      setCardInfo("");
-      setShowMessage(true);
+    if (state.name && state.email && state.mailAddress && state.cardInfo) {
+      setState({
+        name: "",
+        email: "",
+        mailAddress: "",
+        cardInfo: "",
+        showMessage: true,
+      });
       dispatch(emptyCart());
     } else {
       alert("Please fill all fields");
@@ -45,40 +43,56 @@ export const OrderForm = () => {
   };
 
   return (
-    <div style={{ marginTop: "5rem" }}>
-      {showMessage && (
+    <div className="topMargin">
+      {state.showMessage && (
         <div class="ui positive message">
-          <i class="close icon" onClick={manageMessage}></i>
+          <i class="close icon" name="showMessage" onClick={manageMessage}></i>
           <div class="header">Your order is complete</div>
         </div>
       )}
-      <form
-        className="ui form"
-        onSubmit={handleSubmit}
-        style={{ margin: "2rem", marginTop: "5rem", width: "500px" }}
-      >
+      <form className="ui form order" onSubmit={handleSubmit}>
         <div class="field">
           <label>
             Name:
-            <input type="text" value={name} onChange={handleName} />
+            <input
+              type="text"
+              value={state.name}
+              name="name"
+              onChange={handleChanges}
+            />
           </label>
         </div>
         <div class="field">
           <label>
             Email:
-            <input type="text" value={email} onChange={handleEmail} />
+            <input
+              type="text"
+              value={state.email}
+              name="email"
+              onChange={handleChanges}
+            />
           </label>
         </div>
         <div class="field">
           <label>
             Address:
-            <input type="text" value={mailAddress} onChange={handleAddress} />
+            <input
+              type="text"
+              value={state.mailAddress}
+              name="mailAddress"
+              onChange={handleChanges}
+            />
           </label>
         </div>
         <div class="field">
           <label>
             Card Info:
-            <input type="text" value={cardInfo} onChange={handleCard} />
+            <input
+              type="text"
+              value={state.cardInfo}
+              name="cardInfo"
+              onChange={handleChanges}
+            />
           </label>
         </div>
         <input className="ui button green" type="submit" value="Submit" />

@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="ui fixed menu">
-      <div className="ui container">
-        <Link to={"/"}>
+    <div class="ui menu">
+      <Link to={"/"}>
+        <div class="header item">
           <h2>Fake Shop</h2>
-        </Link>
-      </div>
-      <div className="ui container">
-        <Link to={"/cart"}>
+        </div>
+      </Link>
+
+      <Link to={"/cart"}>
+        <a class="item">
           <h2>Shopping Cart</h2>
-        </Link>
-      </div>
+        </a>
+      </Link>
     </div>
   );
 };
