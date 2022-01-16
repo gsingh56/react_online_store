@@ -1,22 +1,43 @@
 import fakeStoreApi from "../../apis/fakeStoreApi";
 import { actionTypes } from "../constants/action-types";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
-export const fetchProducts = () => async (dispatch) => {
-  const response = await fakeStoreApi.get("/products");
+export const fetchProducts = (token) => async (dispatch) => {
+  const response = await axios.get("http://localhost:5424/products", {
+    headers: { Authorization: "JWT " + token },
+  });
 
   dispatch({ type: actionTypes.FETCH_PRODUCTS, payload: response.data });
 };
 
-export const fetchProduct = (id) => async (dispatch) => {
-  const response = await fakeStoreApi.get(`/products/${id}`);
-
-  dispatch({ type: actionTypes.SELECTED_PRODUCT, payload: response.data });
+export const fetchProduct = (id, token) => async (dispatch) => {
+  // const response = await fakeStoreApi.get(`/products/${id}`);
+  const response = await axios.get("http://localhost:5424/product", {
+    headers: { Authorization: "JWT " + token },
+    params: { id: id },
+  });
+  console.log(response);
+  dispatch({ type: actionTypes.SELECTED_PRODUCT, payload: response.data[0] });
 };
 
 export const setProducts = (products) => {
   return {
     type: actionTypes.SET_PRODUCTS,
     payload: products,
+  };
+};
+
+export const logIn = (userToken) => {
+  return {
+    type: actionTypes.LOG_IN,
+    payload: userToken,
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: actionTypes.LOG_OUT,
   };
 };
 

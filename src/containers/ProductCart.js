@@ -19,7 +19,9 @@ export const ProductCart = () => {
         <div class="ui link cards" key={item.id}>
           <div className="ui card">
             <div class="image">
-              <img src={item.image} />
+              {item.image && (
+                <img src={require("../images/" + item.image).default} />
+              )}
             </div>
             <div class="content">
               <a class="header">{item.title}</a>

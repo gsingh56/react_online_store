@@ -13,7 +13,12 @@ const ProductComponent = () => {
           <div className="ui link cards">
             <div className="card">
               <div className="image">
-                <img src={image} alt={title} />
+                {image && (
+                  <img
+                    src={require("../images/" + image).default}
+                    alt={title}
+                  />
+                )}
               </div>
               <div className="content">
                 <div className="header">{title}</div>

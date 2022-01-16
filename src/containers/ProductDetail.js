@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -14,11 +13,12 @@ const ProductDetails = () => {
   const { image, title, price, category, description } = product;
   const { productId } = useParams();
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
   console.log(product);
 
   useEffect(() => {
-    if (productId && productId !== "") {
-      dispatch(fetchProduct(productId));
+    if (productId && productId !== "" && token) {
+      dispatch(fetchProduct(productId, token));
     }
     return () => {
       dispatch(removeSelectedProduct());
@@ -40,7 +40,12 @@ const ProductDetails = () => {
               <div className="ui vertical divider">AND</div>
               <div className="middle aligned row">
                 <div className="column lp">
-                  <img className="ui fluid image" src={image} />
+                  {image && (
+                    <img
+                      className="ui fluid image"
+                      src={require("../images/" + image).default}
+                    />
+                  )}
                 </div>
                 <div className="column rp">
                   <h1>{title}</h1>
