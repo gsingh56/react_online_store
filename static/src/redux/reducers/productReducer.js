@@ -28,7 +28,7 @@ export const selectedProductReducer = (
   }
 };
 
-export const cartReducer = (state = initialState, { type, payload }) => {
+export const cartReducer = (state = {cartItems: []}, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_TO_CART:
       return { cartItems: payload };
@@ -45,8 +45,6 @@ export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.LOG_IN:
       return payload;
-    case actionTypes.LOG_OUT:
-      return {};
     default:
       return state;
   }
