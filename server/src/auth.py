@@ -26,7 +26,7 @@ def validate_user (username, password):
 class Auth:
 
     auth = {
-        'exempt_methods': ['POST']
+        'exempt_methods': ['POST', 'OPTIONS']
     }
 
     def on_get(self, req, resp):

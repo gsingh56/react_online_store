@@ -41,7 +41,7 @@ export const cartReducer = (state = {cartItems: []}, { type, payload }) => {
   }
 };
 
-export const authReducer = (state = initialState, { type, payload }) => {
+export const authReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case actionTypes.LOG_IN:
       return payload;

@@ -23,7 +23,7 @@ export const LogIn = ({ setToken }) => {
     e.preventDefault();
     if (userName && password) {
       axios
-        .post("http://localhost:5424/auth", {
+        .post("http://localhost:5423/auth", {
           username: userName,
           password: password,
         })

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 export const fetchProducts = (token) => async (dispatch) => {
-  const response = await axios.get("http://localhost:5424/products", {
+  const response = await axios.get("http://localhost:5423/products", {
     headers: { Authorization: "JWT " + token },
   });
 
@@ -13,7 +13,7 @@ export const fetchProducts = (token) => async (dispatch) => {
 
 export const fetchProduct = (id, token) => async (dispatch) => {
   // const response = await fakeStoreApi.get(`/products/${id}`);
-  const response = await axios.get("http://localhost:5424/product", {
+  const response = await axios.get("http://localhost:5423/product", {
     headers: { Authorization: "JWT " + token },
     params: { id: id },
   });

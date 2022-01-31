@@ -36,7 +36,7 @@ function App() {
 
   const refreshToken = () => {
     axios
-      .get("http://localhost:5424/refresh", {
+      .get("http://localhost:5423/refresh", {
         headers: { Authorization: "JWT " + token },
       })
       .then((res) => {
@@ -56,7 +56,6 @@ function App() {
     <div className="App">
       {showMessage && (
         <div class="ui negative message">
-          <i class="close icon"></i>
           <div class="header">Are you still there?</div>
           <p>Do you wish to continue your session?</p>
           <button class="ui primary button" onClick={refreshToken}>

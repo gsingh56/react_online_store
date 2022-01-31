@@ -13,7 +13,6 @@ const ProductListing = () => {
   useEffect(() => {
     dispatch(fetchProducts(token));
   }, []);
-  console.log(products);
   return (
     <div>
       <ProductComponent />
