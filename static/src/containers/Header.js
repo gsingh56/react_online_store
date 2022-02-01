@@ -19,6 +19,12 @@ const Header = () => {
         </a>
       </Link>
 
+      <Link to={"/upload"}>
+        <a class="item">
+          <h2>Upload Product</h2>
+        </a>
+      </Link>
+
       <button
         onClick={() => {
           dispatch(logOut());

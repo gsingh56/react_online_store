@@ -15,7 +15,7 @@ export const ProductCart = () => {
   const cart_jsx = cartItems.map((item) => {
     total_cost += item.price * item.count;
     return (
-      <div class="four wide column">
+      <div class="four wide column" key={item.id}>
         <div class="ui link cards" key={item.id}>
           <div className="ui card">
             <div class="image">

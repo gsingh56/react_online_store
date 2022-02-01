@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { logIn } from "./redux/actions/productActions";
 import { useState } from "react";
+import { UploadProductForm } from "./admin/UploadProductForm";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     timer = setTimeout(() => {
       setShowMessage(true);
-    }, 30000);
+    }, 5 * 60 * 1000);
     return () => {
       clearTimeout(timer);
     };
@@ -70,6 +71,7 @@ function App() {
           <Route path="/product/:productId" exact component={ProductDetails} />
           <Route path="/cart" exact component={ProductCart} />
           <Route path="/cart/order" exact component={OrderForm} />
+          <Route path="/upload" excat component={UploadProductForm} />
           <Route>404 Not Found</Route>
         </Switch>
       </Router>

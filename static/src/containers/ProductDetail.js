@@ -70,7 +70,7 @@ const ProductDetails = () => {
           </div>
 
           <Link to={"/cart"}>
-            <div class="ui primary animated button huge" tabindex="0">
+            <div class="ui primary animated button huge" tabIndex="0">
               <div class="visible content">Go To Cart</div>
               <div class="hidden content">
                 <i class="shop icon"></i>

@@ -13,7 +13,7 @@ def user_loader(user_dict):
 
 
 # basic auth backend
-basic_auth = JWTAuthBackend(user_loader, SECRET_KEY, auth_header_prefix='jwt', expiration_delta=50)
+basic_auth = JWTAuthBackend(user_loader, SECRET_KEY, auth_header_prefix='jwt', expiration_delta=6*60*60)
 
 def validate_user (username, password):
     users = get_users()

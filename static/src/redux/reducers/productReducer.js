@@ -15,7 +15,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
 };
 
 export const selectedProductReducer = (
-  state = initialState,
+  state = {},
   { type, payload }
 ) => {
   switch (type) {

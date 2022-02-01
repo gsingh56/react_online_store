@@ -1,4 +1,4 @@
-import fakeStoreApi from "../../apis/fakeStoreApi";
+
 import { actionTypes } from "../constants/action-types";
 import axios from "axios";
 import { useSelector } from "react-redux";
