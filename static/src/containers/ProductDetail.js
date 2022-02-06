@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import {
   addToCart,
   fetchProduct,
-  removeSelectedProduct,
+  removeSelectedProduct
 } from "../redux/actions/productActions";
-import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);
@@ -44,13 +43,14 @@ const ProductDetails = () => {
                     <img
                       className="ui fluid image"
                       src={require("../images/" + image).default}
+                      alt={title}
                     />
                   )}
                 </div>
                 <div className="column rp">
                   <h1>{title}</h1>
                   <h2>
-                    <a className="ui teal tag label">${price}</a>
+                    <div className="ui teal tag label">$ {price.toFixed(2)}</div>
                   </h2>
                   <h3 className="ui brown block header">{category}</h3>
                   <p>{description}</p>

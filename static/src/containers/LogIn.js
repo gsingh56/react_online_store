@@ -1,13 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/actions/productActions";
-import Header from "./Header";
-import axios from "axios";
 
 export const LogIn = ({ setToken }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const dispatch = useDispatch();
 

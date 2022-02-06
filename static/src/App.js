@@ -1,18 +1,17 @@
-import "./App.css";
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import Header from "./containers/Header";
-import ProductListing from "./containers/ProductListing";
-import ProductDetails from "./containers/ProductDetail";
-import { ProductCart } from "./containers/ProductCart";
-import { OrderForm } from "./containers/OrderForm";
-import { LogIn } from "./containers/LogIn";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { logIn } from "./redux/actions/productActions";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UploadProductForm } from "./admin/UploadProductForm";
+import "./App.css";
+import Header from "./containers/Header";
+import { LogIn } from "./containers/LogIn";
+import { OrderForm } from "./containers/OrderForm";
+import { ProductCart } from "./containers/ProductCart";
+import ProductDetails from "./containers/ProductDetail";
+import ProductListing from "./containers/ProductListing";
+import { logIn } from "./redux/actions/productActions";
+
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -20,12 +19,12 @@ function App() {
   const dispatch = useDispatch();
   const [showMessage, setShowMessage] = useState(false);
 
-  var timer;
+  let timer
 
   useEffect(() => {
-    timer = setTimeout(() => {
+     const timer = setTimeout(() => {
       setShowMessage(true);
-    }, 5 * 60 * 1000);
+    }, 5 * 60 * 1000)
     return () => {
       clearTimeout(timer);
     };
@@ -45,7 +44,7 @@ function App() {
         setShowMessage(false);
         timer = setTimeout(() => {
           setShowMessage(true);
-        }, 30000);
+        }, 5 *60 *1000);
       })
       .catch((err) => {
         console.log(err);

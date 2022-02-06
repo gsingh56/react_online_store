@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 export const UploadProductForm = () => {
   const token = useSelector((state) => state.auth.token);
@@ -37,11 +37,12 @@ export const UploadProductForm = () => {
       //   state.image
     ) {
       const formData = new FormData();
-      //   formData.append("title", uploadState.title);
-      //   formData.append("description", uploadState.description);
-      //   formData.append("category", uploadState.category);
-      //   formData.append("price", uploadState.price);
-      formData.append("image", selectedFile);
+        formData.append("title", uploadState.title);
+        formData.append("description", uploadState.description);
+        formData.append("category", uploadState.category);
+        formData.append("price", uploadState.price);
+      formData.append("imageFile", selectedFile);
+      formData.append("imageFileName", selectedFile.name);
       axios
         .post(
           "http://localhost:5423/upload",

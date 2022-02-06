@@ -111,3 +111,27 @@ def get_product(id):
             connection.close()
 
 
+def add_product(title, price, description, category, image):
+    try:
+        connection = mysql.connector.connect(host=HOST,
+                                             database=DATABASE_NAME,
+                                             user=USER,
+                                             password=PASSWORD)
+        mySql_insert_query = """INSERT INTO products (title, price, description, category, image) VALUES("%s",
+         %s, "%s", "%s", "%s")""" % (title, price, description, category, image)
+
+        print(mySql_insert_query)
+
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(mySql_insert_query)
+        connection.commit()
+        records = cursor.fetchall()
+        print(cursor)
+        return records
+
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()

@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../redux/actions/productActions";
 import { Link } from "react-router-dom";
+import { removeFromCart } from "../redux/actions/productActions";
 
 export const ProductCart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -20,11 +20,15 @@ export const ProductCart = () => {
           <div className="ui card">
             <div class="image">
               {item.image && (
-                <img src={require("../images/" + item.image).default} />
+                <img src={require("../images/" + item.image).default} alt={item.title}/>
               )}
             </div>
             <div class="content">
-              <a class="header">{item.title}</a>
+            <Link to={`/product/${item.id}`}>
+              
+            <div class="header">{item.title}</div>
+             </Link>
+              
               <div className="meta price">$ {item.price}</div>
               <div className="meta">Quantity - {item.count}</div>
             </div>

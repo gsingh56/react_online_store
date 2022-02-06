@@ -1,7 +1,6 @@
 
-import { actionTypes } from "../constants/action-types";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { actionTypes } from "../constants/action-types";
 
 export const fetchProducts = (token) => async (dispatch) => {
   const response = await axios.get("http://localhost:5423/products", {

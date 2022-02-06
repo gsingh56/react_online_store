@@ -8,31 +8,30 @@ const Header = () => {
   return (
     <div class="ui menu">
       <Link to={"/"}>
-        <div class="header item">
+        <div className="header item">
           <h2>Fake Shop</h2>
         </div>
       </Link>
 
       <Link to={"/cart"}>
-        <a class="item">
+        <div className="item">
           <h2>Shopping Cart</h2>
-        </a>
+        </div>
       </Link>
 
       <Link to={"/upload"}>
-        <a class="item">
+        <div className="item">
           <h2>Upload Product</h2>
-        </a>
+        </div>
       </Link>
 
-      <button
-        onClick={() => {
+      <div class="right menu">
+    <a class="ui item" onClick={() => {
           dispatch(logOut());
-        }}
-        className="header item"
-      >
-        logout
-      </button>
+        }}>
+      Logout
+    </a>
+  </div>
     </div>
   );
 };
